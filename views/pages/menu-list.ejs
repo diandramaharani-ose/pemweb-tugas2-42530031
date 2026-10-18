@@ -1,0 +1,41 @@
+<%- include('../partials/header', { pageTitle: pageTitle }) %>
+
+<section class="judul-halaman">
+  <h1>Daftar Menu</h1>
+  <p>Menampilkan: <strong><%= kategoriAktif %></strong> (<%= daftar.length %> menu)</p>
+</section>
+
+<% const daftarFilter = [
+  { nilai: 'semua', label: 'Semua', href: '/menu' },
+  { nilai: 'coffee', label: 'Coffee', href: '/menu?kategori=coffee' },
+  { nilai: 'non-coffee', label: 'Non-Coffee', href: '/menu?kategori=non-coffee' },
+  { nilai: 'snacks', label: 'Snacks', href: '/menu?kategori=snacks' },
+  { nilai: 'main-course', label: 'Main Course', href: '/menu?kategori=main-course' },
+  { nilai: 'dessert', label: 'Dessert', href: '/menu?kategori=dessert' }
+]; %>
+
+<nav class="filter">
+  <% daftarFilter.forEach(f => { %>
+    <a class="chip <%= kategoriAktif.toLowerCase() === f.nilai ? 'aktif' : '' %>" href="<%= f.href %>"><%= f.label %></a>
+  <% }) %>
+</nav>
+
+<section class="grid-menu">
+  <% if (daftar.length === 0) { %>
+    <p class="kosong">Belum ada menu di kategori ini.</p>
+  <% } else { %>
+    <% daftar.forEach(item => { %>
+      <article class="kartu-menu">
+        <img src="<%= item.foto %>" alt="<%= item.nama %>">
+        <div class="kartu-isi">
+          <span class="badge"><%= item.kategori.replace('-', ' ') %></span>
+          <h2><%= item.nama %></h2>
+          <p class="harga">Rp <%= item.harga.toLocaleString('id-ID') %></p>
+          <a class="tombol" href="/menu/<%= item.id %>">Lihat Detail</a>
+        </div>
+      </article>
+    <% }) %>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

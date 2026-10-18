@@ -1,0 +1,16 @@
+<%- include('../partials/header', { pageTitle: pageTitle }) %>
+
+<a href="/menu" class="kembali">← Kembali ke daftar menu</a>
+
+<article class="detail-menu">
+  <img src="<%= item.foto %>" alt="<%= item.nama %>">
+  <div class="detail-info">
+    <span class="badge"><%= item.kategori.replace('-', ' ') %></span>
+    <h1><%= item.nama %></h1>
+    <p class="harga">Rp <%= item.harga.toLocaleString('id-ID') %></p>
+    <p class="deskripsi"><%= item.deskripsi %></p>
+    <a class="tombol" href="/menu?kategori=<%= item.kategori %>">Menu lain di kategori ini</a>
+  </div>
+</article>
+
+<%- include('../partials/footer') %>
