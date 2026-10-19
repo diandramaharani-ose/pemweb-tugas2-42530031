@@ -8,7 +8,7 @@ Aplikasi katalog menu kafe sederhana berbasis Node.js, Express, dan EJS (Server-
 - **Tema**: Tema A (Daftar Menu Kafe)
 
 ## Video Penjelasan
-[Tonton di YouTube](ISI_LINK_VIDEO_NANTI)
+https://youtu.be/lJdbtvnCZzc
 
 ## Fitur
 - `/menu`: daftar semua menu
